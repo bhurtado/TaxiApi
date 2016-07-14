@@ -1,0 +1,39 @@
+﻿<Window x:Class="TaxiClient.AddInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiClient"
+        mc:Ignorable="d"
+        Title="AddInfoWindow" MinHeight="300" MaxHeight="300" MinWidth="350"  MaxWidth="350" Width="350" Height="300">
+    <Grid MinHeight="200" MinWidth="300">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="70" MaxWidth="100"></ColumnDefinition>
+            <ColumnDefinition MinWidth="70" MaxWidth="100"></ColumnDefinition>
+            <ColumnDefinition MinWidth="70" MaxWidth="100"></ColumnDefinition>
+            <ColumnDefinition MinWidth="70" MaxWidth="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  Content="{Binding Path=Label , UpdateSourceTrigger=PropertyChanged}"></Label>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10">Color</Label>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10">Model</Label>
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10">Fuel</Label>
+        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10">Manufacturer</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5 10 5 10" MinWidth="50" MinHeight="15" Text="{Binding Color, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5 10 5 10" Text="{Binding Model , UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5 10 5 10" Text="{Binding Fuel, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5 10 5 10" Text="{Binding Manufacturer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <CheckBox Grid.Row="1" Grid.Column="3" FontSize="10" VerticalAlignment="Center" Content="Metalic" HorizontalAlignment="Center" IsChecked="{Binding Metalic}" ></CheckBox>
+        <CheckBox Grid.Row="3" Grid.Column="3" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Hybrid" IsChecked="{Binding Hybrid}"></CheckBox>
+        <Button Grid.Row="1" Grid.Column="2" Margin="5 10 5 10" FontSize="10" Command="{Binding AddColor}">add</Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="5 10 5 10" FontSize="10" Command="{Binding AddModel}">add</Button>
+        <Button Grid.Row="3" Grid.Column="2" Margin="5 10 5 10" FontSize="10" Command="{Binding AddFuel, UpdateSourceTrigger=PropertyChanged}">add</Button>
+        <Button Grid.Row="4" Grid.Column="2" Margin="5 10 5 10" FontSize="10" Command="{Binding AddManufacturer}">add</Button>
+    </Grid>
+</Window>

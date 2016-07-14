@@ -1,0 +1,43 @@
+﻿<Window x:Class="TaxiClient.OtherCostsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiClient"
+        mc:Ignorable="d"
+        Title="OtherCostsWindow" Height="300" Width="300">
+    <Grid>
+        <GroupBox Header="{Binding GroupBoxLabel,UpdateSourceTrigger=PropertyChanged}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Row="1" Grid.RowSpan="3" Header="Vehicles">
+                    <ListBox ItemsSource="{Binding Vehicles,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Vehicle,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="RegNr"></ListBox>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" Header="Maintenance">
+                    <ListBox ItemsSource="{Binding Costs,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedCost,UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding MaintenanceSelectedIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="MaintenanceType"></ListBox>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="1" Header="Type">
+                    <TextBox Text="{Binding MaintenanceTypTextBox,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                </GroupBox>
+                <GroupBox Grid.Row="2" Grid.Column="1" Header="Cost">
+                    <TextBox Text="{Binding CostTextBox,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat=N2}"></TextBox>
+                </GroupBox>
+                <Button Grid.Row="3" Grid.Column="1" Margin="5 10" Command="{Binding Clear}" Content="Clear"></Button>
+                <Button Grid.Row="4" Grid.Column="1" Margin="5 10" Command="{Binding AddCost}" Content="Add"></Button>
+                <Button Grid.Row="4" Grid.Column="2" Margin="5 10" Command="{Binding Delete}" Content="Delete"></Button>
+                <Label Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Content="{Binding SavedOrNotLabel,UpdateSourceTrigger=PropertyChanged}"></Label>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,177 @@
+﻿<Window x:Class="TaxiClient.DriverStatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiClient"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:extensions="clr-namespace:TaxiClient.Extensions"
+        xmlns:enum="clr-namespace:TaxiClient.ViewModels"
+        mc:Ignorable="d"
+        Title="DriverStatisticsWindow" Height="400" Width="600">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Header="Driver" FontSize="9">
+            <Label FontSize="20" Content="{Binding DriverName}"></Label>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="9" Header="Report Data">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.RowSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="Primary Amount" FontSize="6">
+                            <Label FontSize="9" Content="{Binding SelectedReportPrimaryAmount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Label>
+                        </GroupBox>
+                        <GroupBox Grid.Row="1" Header="Unit Price" FontSize="6">
+                            <Label FontSize="9" Content="{Binding SelectedReportPrimaryUnitPrice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></Label>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox>
+               
+                <GroupBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="Secondary amount" FontSize="6">
+                            <Label FontSize="9" Content="{Binding SelectedReportSecondaryAmount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></Label>
+                        </GroupBox>
+                        <GroupBox Header="Unit Price" FontSize="6" Grid.Row="1">
+                            <Label FontSize="9" Content="{Binding SelectedReportSecondaryUnitPrice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></Label>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Header="Distance" FontSize="6">
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding SelectedReportDistance,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></Label>
+                </GroupBox>
+                <GroupBox Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" FontSize="6" Header="Total Cost">
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding SelectedReportTotalCost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></Label>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="3" Header="Vehicles" FontSize="9">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Margin="5" ItemsSource="{Binding Vehicles, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedVehicle,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="RegNr" SelectedIndex="{Binding SelectedVehicleIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ListBox>
+                <ListBox Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Margin="5" ItemsSource="{Binding Reports,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedReport,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="ReportDate" FontSize="7" SelectedIndex="{Binding SelectedReportIndex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ListBox>
+                <ComboBox Grid.Row="0" Grid.Column="1" Margin="7" FontSize="15" IsReadOnly="True" ItemsSource="{Binding ReportedYears,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedYear,UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedYearIndex,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                <ComboBox Grid.Row="1" Grid.Column="1" Margin="7" FontSize="15" IsReadOnly="True" ItemsSource="{Binding Source={extensions:EnumBindingSource {x:Type enum:Months}}}" SelectedValue="{Binding SelectedMonth,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            </Grid>
+        </GroupBox>
+
+
+        <GroupBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="5" FontSize="9" Header="{Binding StatisticLabel,UpdateSourceTrigger=PropertyChanged}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="112*"></ColumnDefinition>
+                    <ColumnDefinition Width="40*"></ColumnDefinition>
+                    <ColumnDefinition Width="73*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.RowSpan="5"  FontSize="9" Header="Primary">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Grid.Row="0" Grid.Column="0" FontSize="8" Margin="3" Header="Amount">
+                            <Grid>
+                                <Label Content="{Binding PrimaryAmountAvarage,UpdateSourceTrigger=PropertyChanged}"></Label>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Row="1" Grid.Column="0" FontSize="8" Margin="3" Header="Unitprice">
+                            <Grid>
+                                <Label Content="{Binding PrimaryUnitPriceAvarage,UpdateSourceTrigger=PropertyChanged}"></Label>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Row="2" Grid.Column="0" FontSize="8" Margin="3" Header="Cost">
+                            <Grid>
+                                <Label Content="{Binding PrimaryAvarageCost,UpdateSourceTrigger=PropertyChanged}"></Label>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" FontSize="9" Header="Secondary" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <GroupBox FontSize="8" Margin="3" Header="Amount">
+                            <Grid>
+                                <Label Content="{Binding SecondaryAmountAvarage,UpdateSourceTrigger=PropertyChanged}"></Label>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Row="1" FontSize="8" Margin="3" Header="Unitprice">
+                            <Grid>
+                                <Label Content="{Binding SecondaryUnitPriceAvarage,UpdateSourceTrigger=PropertyChanged}"></Label>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Row="2"  FontSize="8" Margin="3" Header="Cost">
+                            <Grid>
+                                <Label Content="{Binding SecondaryAvarageCost,UpdateSourceTrigger=PropertyChanged}"></Label>
+                            </Grid>
+                        </GroupBox>
+
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+
+
+        <!--<ListBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Margin="5" ItemsSource="{Binding Reports, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedReport,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="ReportDate"></ListBox>-->
+
+    </Grid>
+</Window>

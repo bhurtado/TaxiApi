@@ -1,0 +1,54 @@
+﻿<Window x:Class="TaxiClient.AddEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiClient"
+        xmlns:helpers="clr-namespace:TaxiClient.Helpers"
+        xmlns:models="clr-namespace:TaxiClient.Models"
+        mc:Ignorable="d"
+        Title="AddEmployeeWindow" Height="300" Width="300">
+
+   
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="0" FontSize="8">Firstname</Label>
+        <Label Grid.Row="2" Grid.Column="0" FontSize="8">Lastname</Label>
+        <Label Grid.Row="3" Grid.Column="0" FontSize="8">Username</Label>
+        <Label Grid.Row="4" Grid.Column="0" FontSize="8">Password</Label>
+        <Label Grid.Row="5" Grid.Column="0" FontSize="8">Confirm Password</Label>
+        <TextBox Name="txtFirstName" Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Name="txtLastName" Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Name="txtUserName" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        
+        <PasswordBox Name="pwbPassword" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" PasswordChanged="PwbPassword_OnPasswordChanged"/>
+        <PasswordBox Name="pwbConfirmPword" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" PasswordChanged="PwbPassword_OnPasswordChanged"/>
+        
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" Name="lblStatus"></Label>
+
+        <CheckBox Name="ckbAdmin" Grid.Row="1" Grid.Column="3" FontSize="8" IsChecked="{Binding IsAdmin,UpdateSourceTrigger=PropertyChanged}">Admin</CheckBox>
+
+        <Button Name="btnAddEmployee" Grid.Row="7" Grid.Column="2" Click="btnAddEmployee_Click">Add</Button>
+            
+      
+    </Grid>
+</Window>

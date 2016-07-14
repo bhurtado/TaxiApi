@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f11e10ec13c0488a8ff49ee13e2114b8" Name="Diagram1">
+        <EntityTypeShape EntityType="TaxiDBModel.Color" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.Employee" Width="1.5" PointX="3.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.Fuel" Width="1.5" PointX="10.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.Manufacturer" Width="1.5" PointX="1.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.Model" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.Report" Width="1.5" PointX="6.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.Vehicle" Width="1.5" PointX="1.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiDBModel.VehicleFuel" Width="1.5" PointX="8.75" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="TaxiDBModel.FK__Vehicle__Color_I__3DB3258D" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__Report__Employee__45544755" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__VehicleFu__Fuel___4183B671" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__Vehicle__Manufac__3CBF0154" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__Vehicle__Model_I__3EA749C6" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__Report__PrimaryF__473C8FC7" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__Report__Secondar__4830B400" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__Report__Vehicle___46486B8E" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiDBModel.FK__VehicleFu__Vehic__4277DAAA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TaxiDBModel.Maintenance" Width="1.5" PointX="3.75" PointY="4.375" />
+        <AssociationConnector Association="TaxiDBModel.FK__Maintenan__Vehic__75035A77" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

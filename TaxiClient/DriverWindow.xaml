@@ -1,0 +1,41 @@
+﻿<Window x:Class="TaxiClient.Models.DriverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiClient.Models"
+        mc:Ignorable="d"
+        Title="DriverWindow" Height="150" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.ColumnSpan="4" Grid.RowSpan="4" Header="{Binding DriverName}">
+           <Grid>
+               <Grid.RowDefinitions>
+                   <RowDefinition></RowDefinition>
+                   <RowDefinition></RowDefinition>
+                   <RowDefinition></RowDefinition>
+               </Grid.RowDefinitions>
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition></ColumnDefinition>
+                   <ColumnDefinition></ColumnDefinition>
+               </Grid.ColumnDefinitions>
+                <Button Grid.Row="1" Grid.Column="0"  Content="New Report" Margin="3" Command="{Binding NewReport}"></Button>
+                <Button Grid.Row="1" Grid.Column="1"  Content="My reports" Margin="3" Command="{Binding MyReports}"></Button>
+            </Grid>
+        </GroupBox>
+       
+        
+       
+    </Grid>
+</Window>

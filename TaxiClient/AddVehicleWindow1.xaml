@@ -1,0 +1,55 @@
+﻿<Window x:Class="TaxiClient.AddVehicleWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiClient"
+        xmlns:models="clr-namespace:TaxiClient.Models"
+        mc:Ignorable="d"
+        Title="AddVehicleWindow1" Height="400" Width="600">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="3"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0">RegNr</Label>
+        <TextBox Name="txtRegNr" Grid.Row="0" Grid.Column="1" Margin="2 5 2 5" Text="{Binding RegNr, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0">Year</Label>
+        <TextBox Name="txtYearModel" Grid.Row="1" Grid.Column="1" Margin="2 5 2 5" Text="{Binding YearModel, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0">Trip meter</Label>
+        <TextBox Name="txtTripMeter" Grid.Row="2" Grid.Column="1" Margin="2 5 2 5" Text="{Binding TripMeter, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="7" Grid.Column="2" Content="{Binding IsVehicleSaved,UpdateSourceTrigger=PropertyChanged}"></Label>
+       
+        <Button Grid.Row="0" Grid.Column="3" Margin="10 10 10 10" FontSize="10" Command="{Binding AddInfo}" >Add Info</Button>
+      
+            <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="5 0 5 0"></Separator>
+        
+        <Label Grid.Row="4" Grid.Column="0">Color</Label>
+        <Label Grid.Row="4" Grid.Column="1">Model</Label>
+        <Label Grid.Row="4" Grid.Column="2">Fuel</Label>
+        <Label Grid.Row="4" Grid.Column="3">Manufacturer</Label>
+        <ComboBox Name="cbColorName" Grid.Row="4"  Grid.Column="0" Margin="2 5 2 5"  ItemsSource="{Binding Colors}" IsEditable="True" IsReadOnly="True" Text="Color" SelectedItem="{Binding Path=SelectedColor, Mode=TwoWay}" SelectedValuePath="Id" DisplayMemberPath="ColorName"></ComboBox>
+        <ComboBox Name="cbModelType" Grid.Row="4"  Grid.Column="1" Margin="2 5 2 5" ItemsSource="{Binding Models}" SelectedItem="{Binding Path=SelectedModel, Mode=TwoWay}" SelectedValuePath="Id" DisplayMemberPath="ModelType" IsEditable="True" IsReadOnly="True" Text="Model"></ComboBox>
+        <ComboBox Name="cbFuelType" Grid.Row="4"  Grid.Column="2" Margin="2 5 2 5" ItemsSource="{Binding Fuels}" SelectedItem="{Binding Path=SelectedFuel,Mode=TwoWay}" SelectedValuePath="Id" DisplayMemberPath="FuelType" IsEditable="True" IsReadOnly="True" Text="Fuel"></ComboBox>
+        <ComboBox IsEnabled="{Binding ElementName=cbHybrid, Path=IsChecked}" Name="cbHybridFuelType" Grid.Row="5"  Grid.Column="2" Margin="2 5 2 5" ItemsSource="{Binding HybridFuels}" SelectedItem="{Binding Path=SelectedHybridFuel,Mode=TwoWay}" SelectedValuePath="Id" DisplayMemberPath="FuelType" IsEditable="True" IsReadOnly="True" Text="Hybrid Fuel"></ComboBox>
+        <CheckBox Name="cbHybrid" Grid.Row="2" Grid.Column="2" Content="Hybrid" IsChecked="{Binding IsHybrid}" HorizontalAlignment="Left" VerticalAlignment="Bottom"  >
+            
+        </CheckBox>
+        <ComboBox Name="cbManufacturer" Grid.Row="4"  Grid.Column="3" Margin="2 5 2 5" ItemsSource="{Binding Manufacturers}" SelectedItem="{Binding Path=SelectedManufacturer , Mode=TwoWay}" SelectedValuePath="Id" DisplayMemberPath="ManufactName" IsEditable="True" IsReadOnly="True" Text="Manufacturer" ></ComboBox>
+        <Button Grid.Row="7" Grid.Column="7" Margin="5 5 5 5" Command="{Binding AddVehicle}">Add Vehicle</Button>
+    </Grid>
+</Window>

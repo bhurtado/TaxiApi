@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaxiDBModelStoreContainer" CdmEntityContainer="TaxiDBEntities">
+    <EntitySetMapping Name="Color">
+      <EntityTypeMapping TypeName="TaxiDBModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="Metalic" ColumnName="Metalic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="TaxiDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Pword" ColumnName="Pword" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fuel">
+      <EntityTypeMapping TypeName="TaxiDBModel.Fuel">
+        <MappingFragment StoreEntitySet="Fuel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturer">
+      <EntityTypeMapping TypeName="TaxiDBModel.Manufacturer">
+        <MappingFragment StoreEntitySet="Manufacturer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ManufactName" ColumnName="ManufactName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Model">
+      <EntityTypeMapping TypeName="TaxiDBModel.Model">
+        <MappingFragment StoreEntitySet="Model">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report">
+      <EntityTypeMapping TypeName="TaxiDBModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Vehicle_Id" ColumnName="Vehicle_Id" />
+          <ScalarProperty Name="PrimaryFuel_ID" ColumnName="PrimaryFuel_ID" />
+          <ScalarProperty Name="SecondaryFuel_ID" ColumnName="SecondaryFuel_ID" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="PrimaryFuelAmount" ColumnName="PrimaryFuelAmount" />
+          <ScalarProperty Name="PrimaryFuelUnitPrice" ColumnName="PrimaryFuelUnitPrice" />
+          <ScalarProperty Name="SecondaryFuelAmount" ColumnName="SecondaryFuelAmount" />
+          <ScalarProperty Name="SecondaryFuelUnitPrice" ColumnName="SecondaryFuelUnitPrice" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicle">
+      <EntityTypeMapping TypeName="TaxiDBModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="RegNr" ColumnName="RegNr" />
+          <ScalarProperty Name="Manufact_Id" ColumnName="Manufact_Id" />
+          <ScalarProperty Name="Color_Id" ColumnName="Color_Id" />
+          <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+          <ScalarProperty Name="YearModel" ColumnName="YearModel" />
+          <ScalarProperty Name="TripMeter" ColumnName="TripMeter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleFuel">
+      <EntityTypeMapping TypeName="TaxiDBModel.VehicleFuel">
+        <MappingFragment StoreEntitySet="VehicleFuel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fuel_Id" ColumnName="Fuel_Id" />
+          <ScalarProperty Name="Vehicle_Id" ColumnName="Vehicle_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maintenance">
+      <EntityTypeMapping TypeName="TaxiDBModel.Maintenance">
+        <MappingFragment StoreEntitySet="Maintenance">
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="MaintenanceCost" ColumnName="MaintenanceCost" />
+          <ScalarProperty Name="MaintenanceType" ColumnName="MaintenanceType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK__Maintenan__Vehic__75035A77" TypeName="TaxiDBModel.FK__Maintenan__Vehic__75035A77" StoreEntitySet="Maintenance">
+      <EndProperty Name="Maintenance">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="Vehicle">
+        <ScalarProperty Name="RegNr" ColumnName="Vehicle_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

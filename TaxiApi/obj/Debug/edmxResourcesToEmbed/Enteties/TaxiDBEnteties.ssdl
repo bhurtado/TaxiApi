@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaxiDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ColorName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Metalic" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Pword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Salt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fuel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FuelType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maintenance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaintenanceType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManufactName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OtherCosts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegNr" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Maintenance_Id" Type="int" Nullable="false" />
+    <Property Name="CostDate" Type="datetime" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="passwordDB">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="Vehicle_Id" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Fuel_Id" Type="int" Nullable="false" />
+    <Property Name="ReportDate" Type="datetime" Nullable="false" />
+    <Property Name="FuelAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="RegNr" />
+    </Key>
+    <Property Name="RegNr" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Manufact_Id" Type="int" Nullable="false" />
+    <Property Name="Color_Id" Type="int" />
+    <Property Name="Fuel_Id" Type="int" Nullable="false" />
+    <Property Name="Model_Id" Type="int" Nullable="false" />
+    <Property Name="YearModel" Type="int" />
+    <Property Name="TripMeter" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__OtherCost__Maint__3864608B">
+    <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="1" />
+    <End Role="OtherCosts" Type="Self.OtherCosts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maintenance">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OtherCosts">
+        <PropertyRef Name="Maintenance_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OtherCost__RegNr__37703C52">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+    <End Role="OtherCosts" Type="Self.OtherCosts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="RegNr" />
+      </Principal>
+      <Dependent Role="OtherCosts">
+        <PropertyRef Name="RegNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Employee__32AB8735">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Fuel_Id__3493CFA7">
+    <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fuel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Fuel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Vehicle___339FAB6E">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="RegNr" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Vehicle_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Color_I__2DE6D218">
+    <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Color_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Fuel_Id__2EDAF651">
+    <End Role="Fuel" Type="Self.Fuel" Multiplicity="1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fuel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Fuel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Manufac__2CF2ADDF">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Manufact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Model_I__2FCF1A8A">
+    <End Role="Model" Type="Self.Model" Multiplicity="1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Model_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TaxiDBModelStoreContainer">
+    <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fuel" EntityType="Self.Fuel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OtherCosts" EntityType="Self.OtherCosts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="passwordDB" EntityType="Self.passwordDB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__OtherCost__Maint__3864608B" Association="Self.FK__OtherCost__Maint__3864608B">
+      <End Role="Maintenance" EntitySet="Maintenance" />
+      <End Role="OtherCosts" EntitySet="OtherCosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OtherCost__RegNr__37703C52" Association="Self.FK__OtherCost__RegNr__37703C52">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="OtherCosts" EntitySet="OtherCosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Employee__32AB8735" Association="Self.FK__Report__Employee__32AB8735">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Fuel_Id__3493CFA7" Association="Self.FK__Report__Fuel_Id__3493CFA7">
+      <End Role="Fuel" EntitySet="Fuel" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Vehicle___339FAB6E" Association="Self.FK__Report__Vehicle___339FAB6E">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Color_I__2DE6D218" Association="Self.FK__Vehicle__Color_I__2DE6D218">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Fuel_Id__2EDAF651" Association="Self.FK__Vehicle__Fuel_Id__2EDAF651">
+      <End Role="Fuel" EntitySet="Fuel" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Manufac__2CF2ADDF" Association="Self.FK__Vehicle__Manufac__2CF2ADDF">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Model_I__2FCF1A8A" Association="Self.FK__Vehicle__Model_I__2FCF1A8A">
+      <End Role="Model" EntitySet="Model" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaxiDBModelStoreContainer" CdmEntityContainer="TaxiDBEntities1">
+    <EntitySetMapping Name="Color">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Color)">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="Metalic" ColumnName="Metalic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Employee)">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Pword" ColumnName="Pword" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fuel">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Fuel)">
+        <MappingFragment StoreEntitySet="Fuel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maintenance">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Maintenance)">
+        <MappingFragment StoreEntitySet="Maintenance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaintenanceType" ColumnName="MaintenanceType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturer">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Manufacturer)">
+        <MappingFragment StoreEntitySet="Manufacturer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ManufactName" ColumnName="ManufactName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Model">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Model)">
+        <MappingFragment StoreEntitySet="Model">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtherCosts">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.OtherCosts)">
+        <MappingFragment StoreEntitySet="OtherCosts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RegNr" ColumnName="RegNr" />
+          <ScalarProperty Name="Maintenance_Id" ColumnName="Maintenance_Id" />
+          <ScalarProperty Name="CostDate" ColumnName="CostDate" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Report)">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Vehicle_Id" ColumnName="Vehicle_Id" />
+          <ScalarProperty Name="Fuel_Id" ColumnName="Fuel_Id" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="FuelAmount" ColumnName="FuelAmount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicle">
+      <EntityTypeMapping TypeName="IsTypeOf(TaxiDBModel.Vehicle)">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="RegNr" ColumnName="RegNr" />
+          <ScalarProperty Name="Manufact_Id" ColumnName="Manufact_Id" />
+          <ScalarProperty Name="Color_Id" ColumnName="Color_Id" />
+          <ScalarProperty Name="Fuel_Id" ColumnName="Fuel_Id" />
+          <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+          <ScalarProperty Name="YearModel" ColumnName="YearModel" />
+          <ScalarProperty Name="TripMeter" ColumnName="TripMeter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="passwordDB">
+      <EntityTypeMapping TypeName="TaxiDBModel.passwordDB">
+        <MappingFragment StoreEntitySet="passwordDB">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
